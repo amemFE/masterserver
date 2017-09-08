@@ -61,7 +61,7 @@ public class GreetingController {
     @RequestMapping("/greeting")
     public String greeting(Model model,HttpServletRequest request) {
         this.initialize();
-        model.addAttribute("ip","192.168.11.102");
+        model.addAttribute("ip","192.168.11.105");
         String ip = request.getRemoteAddr();
         String loc = ipmap.get(ip);
         System.out.println(loc);
@@ -69,7 +69,7 @@ public class GreetingController {
             switch (loc) {
                 case "s14":
                     return "wish";
-                case "s13":
+                case "s12":
                     return "greeting";
             }
         }
