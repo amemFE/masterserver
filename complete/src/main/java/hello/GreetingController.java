@@ -24,16 +24,7 @@ public class GreetingController {
     JSONParser parser = new JSONParser();
 
     public void initialize() {
-        try {
 
-            myip = InetAddress.getLocalHost().getHostAddress();
-
-
-        } catch (UnknownHostException e) {
-
-            e.printStackTrace();
-
-        }
         try {
 
             Object tempobj = parser.parse(new FileReader(jsonPath));
@@ -58,19 +49,21 @@ public class GreetingController {
         }
     }
 
-    @RequestMapping("/greeting")
+    @RequestMapping("/")
     public String greeting(Model model,HttpServletRequest request) {
         this.initialize();
-        model.addAttribute("ip","192.168.11.105");
+        model.addAttribute("myip",this.myip);
         String ip = request.getRemoteAddr();
         String loc = ipmap.get(ip);
         System.out.println(loc);
         if(loc!=null) {
             switch (loc) {
-                case "s14":
-                    return "wish";
-                case "s12":
-                    return "greeting";
+                case "foodShop-s3":
+                    return "foodshop";
+                case "petshop-s4":
+                    return "petshop";
+                case "fashion-s6":
+                    return "fashion";
             }
         }
         return "def";

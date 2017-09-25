@@ -1,0 +1,23 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <head>
+        <meta charset="UTF-8"></meta>
+        <meta http-equiv="refresh" content="1; url=http://www.google.com"></meta>
+
+        <title>Page Redirection</title>
+    </head>
+</head>
+<body>
+<span id="myvar" th:text="${myip}"></span>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    var myip = [[${myip}]];
+
+   window.location.href = "http://"+myip+":7080"
+    /*]]>*/
+</script>
+</body>
+</html>
